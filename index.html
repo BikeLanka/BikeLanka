@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111111">
+  <title>BikeLanka | Buy & Sell Bikes</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #101010;
+      color: white;
+    }
+    header {
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #181818;
+    }
+    .logo { color: #ff3030; font-size: 25px; font-weight: bold; }
+    .hero { padding: 65px 20px; text-align: center; }
+    .hero h1 { font-size: 38px; }
+    .hero p { color: #bbb; }
+    button {
+      background: #ed2929;
+      border: 0;
+      color: white;
+      padding: 13px 22px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .search {
+      margin: 20px auto;
+      max-width: 550px;
+      display: flex;
+      gap: 8px;
+      padding: 0 15px;
+    }
+    input {
+      min-width: 0;
+      flex: 1;
+      padding: 13px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      background: #222;
+      color: white;
+    }
+    h2 { padding: 0 20px; }
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 15px;
+    }
+    .category {
+      background: #222;
+      padding: 22px 5px;
+      text-align: center;
+      border-radius: 12px;
+    }
+    footer { text-align: center; padding: 30px; color: #999; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">BikeLanka 🏍️</div>
+    <button onclick="alert('Selling feature coming soon!')">Sell Bike</button>
+  </header>
+
+  <section class="hero">
+    <h1>Find Your Dream Bike</h1>
+    <p>Sri Lanka's Motorcycle Marketplace</p>
+    <button onclick="document.getElementById('categories').scrollIntoView()">Explore Bikes</button>
+  </section>
+
+  <div class="search">
+    <input id="search" placeholder="Search your dream bike...">
+    <button onclick="alert('Search feature coming soon!')">Search</button>
+  </div>
+
+  <h2 id="categories">Browse Categories</h2>
+  <section class="categories">
+    <div class="category">🏍️<br>Motorbikes</div>
+    <div class="category">🛵<br>Scooters</div>
+    <div class="category">🚲<br>Other</div>
+  </section>
+
+  <footer>
+    <p>BikeLanka © 2026</p>
+    <p>Buy • Sell • Ride</p>
+  </footer>
+</body>
+</html>
