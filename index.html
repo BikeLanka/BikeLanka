@@ -2,96 +2,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#111111">
-  <title>BikeLanka | Buy & Sell Bikes</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #101010;
-      color: white;
-    }
-    header {
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #181818;
-    }
-    .logo { color: #ff3030; font-size: 25px; font-weight: bold; }
-    .hero { padding: 65px 20px; text-align: center; }
-    .hero h1 { font-size: 38px; }
-    .hero p { color: #bbb; }
-    button {
-      background: #ed2929;
-      border: 0;
-      color: white;
-      padding: 13px 22px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .search {
-      margin: 20px auto;
-      max-width: 550px;
-      display: flex;
-      gap: 8px;
-      padding: 0 15px;
-    }
-    input {
-      min-width: 0;
-      flex: 1;
-      padding: 13px;
-      border-radius: 8px;
-      border: 1px solid #444;
-      background: #222;
-      color: white;
-    }
-    h2 { padding: 0 20px; }
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      padding: 15px;
-    }
-    .category {
-      background: #222;
-      padding: 22px 5px;
-      text-align: center;
-      border-radius: 12px;
-    }
-    footer { text-align: center; padding: 30px; color: #999; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101010">
+<title>BikeLanka | Sri Lanka Vehicle Marketplace</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#101010;color:white}
+header{background:#181818;padding:17px 6%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.logo{font-size:26px;font-weight:bold;color:#ff3434}
+button{border:0;background:#ed3030;color:white;padding:12px 19px;border-radius:8px;cursor:pointer;font-weight:bold}
+button:hover{background:#c92121}
+.hero{text-align:center;padding:75px 15px 45px;background:linear-gradient(120deg,#211010,#101010)}
+.hero h1{font-size:clamp(30px,5vw,52px);margin:10px}
+.hero p{color:#bbb;font-size:17px}
+.search{max-width:650px;margin:30px auto;display:flex;gap:8px;padding:0 15px}
+input,select{background:#242424;color:white;border:1px solid #444;border-radius:8px;padding:13px;width:100%;outline:none}
+.section{padding:25px 6%}
+.section h2{margin-bottom:22px}
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.category{background:#222;border:1px solid #333;padding:23px 8px;border-radius:12px;text-align:center;cursor:pointer;font-size:16px}
+.category:hover{border-color:#ed3030}
+.category span{display:block;font-size:30px;margin-bottom:10px}
+.listings{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.vehicle{background:#202020;border-radius:12px;overflow:hidden;border:1px solid #333}
+.vehicle img{width:100%;height:190px;object-fit:cover;background:#292929}
+.vehicle-info{padding:16px}
+.price{color:#ff4444;font-size:21px;font-weight:bold}
+.muted{color:#aaa;font-size:14px}
+.tag{display:inline-block;background:#352020;color:#ff8585;padding:5px 9px;border-radius:5px;font-size:12px}
+.form-box{max-width:600px;margin:20px auto;background:#202020;padding:22px;border-radius:12px;display:grid;gap:13px}
+.form-box label{font-size:14px;color:#ccc}
+.form-box input,.form-box select{margin-top:6px}
+footer{text-align:center;padding:35px;background:#181818;color:#999;margin-top:35px}
+.hidden{display:none!important}
+@media(max-width:700px){
+.categories{grid-template-columns:repeat(2,1fr)}
+.listings{grid-template-columns:1fr}
+.hero{padding-top:50px}
+header{padding:14px}
+.section{padding:20px 15px}
+}
+</style>
 </head>
 <body>
-  <header>
-    <div class="logo">BikeLanka 🏍️</div>
-    <button onclick="alert('Selling feature coming soon!')">Sell Bike</button>
-  </header>
 
-  <section class="hero">
-    <h1>Find Your Dream Bike</h1>
-    <p>Sri Lanka's Motorcycle Marketplace</p>
-    <button onclick="document.getElementById('categories').scrollIntoView()">Explore Bikes</button>
-  </section>
+<header>
+<div class="logo">BikeLanka 🏍️</div>
+<button onclick="document.getElementById('sell').scrollIntoView()">+ Sell Vehicle</button>
+</header>
 
-  <div class="search">
-    <input id="search" placeholder="Search your dream bike...">
-    <button onclick="alert('Search feature coming soon!')">Search</button>
-  </div>
+<section class="hero">
+<h1>Find Your Dream Vehicle</h1>
+<p>Sri Lanka's Vehicle Marketplace</p>
+<div class="search">
+<input id="search" placeholder="Search bike, car, model...">
+<button onclick="searchVehicles()">Search</button>
+</div>
+<button onclick="document.getElementById('listings').scrollIntoView()">Explore Vehicles</button>
+</section>
 
-  <h2 id="categories">Browse Categories</h2>
-  <section class="categories">
-    <div class="category">🏍️<br>Motorbikes</div>
-    <div class="category">🛵<br>Scooters</div>
-    <div class="category">🚲<br>Other</div>
-  </section>
+<section class="section">
+<h2>Browse Categories</h2>
+<div class="categories">
+<div class="category" onclick="filterVehicles('Motorbike')"><span>🏍️</span>Motorbikes</div>
+<div class="category" onclick="filterVehicles('Scooter')"><span>🛵</span>Scooters</div>
+<div class="category" onclick="filterVehicles('Car')"><span>🚗</span>Cars</div>
+<div class="category" onclick="filterVehicles('Three Wheeler')"><span>🛺</span>Three Wheelers</div>
+</div>
+</section>
 
-  <footer>
-    <p>BikeLanka © 2026</p>
-    <p>Buy • Sell • Ride</p>
-  </footer>
+<section class="section" id="listings">
+<h2>Latest Listings</h2>
+<p class="muted" id="resultCount">Featured vehicles</p>
+<div class="listings" id="vehicleList"></div>
+</section>
+
+<section class="section" id="sell">
+<h2>Sell Your Vehicle</h2>
+<div class="form-box">
+<label>Vehicle Type
+<select id="type">
+<option>Motorbike</option>
+<option>Scooter</option>
+<option>Car</option>
+<option>Three Wheeler</option>
+</select></label>
+<label>Brand and Model
+<input id="model" placeholder="Example: Honda Dio" required></label>
+<label>Year
+<input id="year" type="number" placeholder="2020"></label>
+<label>Price (LKR)
+<input id="price" type="number" placeholder="1500000"></label>
+<label>Location
+<input id="location" placeholder="Colombo"></label>
+<button onclick="submitListing()">Submit Listing</button>
+<p class="muted" id="formMessage">Your listing will be shown as a local demo on this device.</p>
+</div>
+</section>
+
+<footer>
+<h3>BikeLanka 🏍️</h3>
+<p>Buy • Sell • Ride</p>
+<p>Sri Lanka Vehicle Marketplace</p>
+</footer>
+
+<script>
+let vehicles=[
+{type:"Motorbike",model:"Honda Hornet",year:"2022",price:"850000",location:"Colombo",image:"https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=800"},
+{type:"Motorbike",model:"Yamaha MT",year:"2021",price:"1250000",location:"Kandy",image:"https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=800"},
+{type:"Scooter",model:"Honda Scooter",year:"2023",price:"450000",location:"Gampaha",image:"https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=800"},
+{type:"Car",model:"Modern Sedan",year:"2020",price:"6500000",location:"Colombo",image:"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800"},
+{type:"Three Wheeler",model:"Tuk Tuk",year:"2022",price:"950000",location:"Galle",image:"https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?w=800"}
+];
+
+let activeType="All";
+
+function render(items){
+let list=document.getElementById("vehicleList");
+list.innerHTML="";
+document.getElementById("resultCount").textContent=items.length+" vehicles found";
+items.forEach(v=>{
+let card=document.createElement("div");
+card.className="vehicle";
+let img=document.createElement("img");
+img.src=v.image||"";
+img.alt=v.model;
+img.onerror=()=>img.style.display="none";
+let info=document.createElement("div");
+info.className="vehicle-info";
+let title=document.createElement("h3");
+title.textContent=v.model;
+let tag=document.createElement("span");
+tag.className="tag";
+tag.textContent=v.type;
+let price=document.createElement("p");
+price.className="price";
+price.textContent="LKR "+Number(v.price).toLocaleString("en-LK");
+let detail=document.createElement("p");
+detail.className="muted";
+detail.textContent=v.year+" • "+v.location;
+info.append(tag,title,price,detail);
+card.append(img,info);
+list.append(card);
+});
+}
+
+function filterVehicles(type){
+activeType=type;
+document.getElementById("listings").scrollIntoView();
+searchVehicles();
+}
+
+function searchVehicles(){
+let q=document.getElementById("search").value.toLowerCase();
+let result=vehicles.filter(v=>
+(activeType==="All"||v.type===activeType)&&
+(v.model.toLowerCase().includes(q)||v.location.toLowerCase().includes(q)||v.type.toLowerCase().includes(q))
+);
+render(result);
+}
+
+function submitListing(){
+let model=document.getElementById("model").value.trim();
+let price=document.getElementById("price").value;
+let location=document.getElementById("location").value.trim();
+let year=document.getElementById("year").value;
+let type=document.getElementById("type").value;
+if(!model||!price||!location){alert("Please fill Model, Price and Location");return}
+vehicles.unshift({type,model,price,location,year:year||"Not specified",image:""});
+render(vehicles);
+document.getElementById("formMessage").textContent="Demo listing added on this device!";
+document.getElementById("model").value="";
+document.getElementById("price").value="";
+document.getElementById("location").value="";
+document.getElementById("listings").scrollIntoView();
+}
+
+render(vehicles);
+</script>
 </body>
 </html>
